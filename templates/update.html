@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update Book
+{% endblock %}
+
+{% block main %}
+
+<h2>Update Books</h2>
+<h3>Editing Book ID: {{ book.id }}</h3>
+<form action="/update" method="post">
+    <input type="hidden" name="book_id" value="{{ book.id }}">
+    <div class="mb-3">
+        <label class="form-label">Title:</label>
+        <input class="form-control" name="title" value="{{ book.title }}">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Author:</label>
+        <input class="form-control" name="author" value="{{ book.author }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Published Year:</label>
+        <input class="form-control" name="published_year" value="{{ book.published_year }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Genre:</label>
+        <input class="form-control" name="genre" value="{{ book.genre }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price:</label>
+        <input class="form-control" name="price" value="{{ book.price }}">
+    </div> 
+    <button class="btn btn-primary mt-3" type="submit">Save Changes</button>
+</form>
+<form action="/delete" method="post">
+    <input type="hidden" name="book_id" value="{{ book.id }}">
+    <button class="btn btn-danger mt-3" type="submit">Delete Book</button>
+</form>
+
+{% endblock %}

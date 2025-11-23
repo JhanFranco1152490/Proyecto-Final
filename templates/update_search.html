@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update_Search
+{% endblock %}
+
+{% block main %}
+
+<h2>Search Books</h2>
+    <form action="/update_search" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="book_id" placeholder="Book Id" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+
+<h2>Profile</h2>
+
+<!-- Button to switch to edit mode -->
+<button id="btn-edit" class="btn btn-secondary mb-3">Update Info</button>
+
+<form action="/profile" method="post" id="profile-form">
+
+    <!-- Read-only fields -->
+    <div class="mb-3">
+        <label class="form-label">Username:</label>
+        <input class="form-control" value="{{ user.username }}" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Role:</label>
+        <input class="form-control" value="{{ role_name }}" disabled>
+    </div>
+
+    <!-- Editable fields (disabled by default) -->
+    <div class="mb-3">
+        <label class="form-label">First Name:</label>
+        <input id="first_name" name="first_name" class="form-control editable-field"
+            value="{{ user.first_name }}" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Last Name:</label>
+        <input id="last_name" name="last_name" class="form-control editable-field"
+            value="{{ user.last_name }}" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Birthdate:</label>
+        <input id="birth_date" name="birth_date" class="form-control editable-field"
+            value="{{ user.birth_date }}" disabled type="date">
+    </div>
+
+    <!-- Password fields: hidden until edit mode is activated -->
+    <div id="password-section" style="display: none;">
+        <div class="mb-3">
+            <label class="form-label">New Password:</label>
+            <input name="password" type="password" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Confirm Password:</label>
+            <input name="confirmation" type="password" class="form-control">
+        </div>
+    </div>
+
+    <!-- Submit button: hidden until edit mode -->
+    <button id="btn-save" class="btn btn-primary mt-3" type="submit" style="display: none;">
+        Save Changes
+    </button>
+
+</form>
+
+<!-- Script to toggle between read-only mode and edit mode -->
+<script>
+
+document.getElementById("btn-edit").addEventListener("click", () => {
+
+    // Enable all fields that can be edited
+    document.querySelectorAll(".editable-field").forEach(input => {
+        input.disabled = false;
+    });
+
+    // Show password fields and the "Save Changes" button
+    document.getElementById("password-section").style.display = "block";
+    document.getElementById("btn-save").style.display = "inline-block";
+
+    // Hide the "Update Info" button to avoid re-triggering
+    document.getElementById("btn-edit").style.display = "none";
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Funds
+{% endblock %}
+
+{% block main %}
+    <h2>Available Funds: {{funds | usd}}</h2>
+    <form action="/funds" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="value" placeholder="Value" type="text">
+        </div>
+        <div class="mb-3">
+            <input name="operation" value="deposit" type="radio">
+            <label>Deposit</label>
+            <input name="operation" value="withdraw" type="radio">
+            <label>Withdraw</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Make Operation</button>
+    </form>
+{% endblock %}

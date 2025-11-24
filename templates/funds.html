@@ -5,17 +5,62 @@
 {% endblock %}
 
 {% block main %}
-    <h2>Available Funds: {{funds | usd}}</h2>
-    <form action="/funds" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="value" placeholder="Value" type="text">
-        </div>
-        <div class="mb-3">
-            <input name="operation" value="deposit" type="radio">
-            <label>Deposit</label>
-            <input name="operation" value="withdraw" type="radio">
-            <label>Withdraw</label>
-        </div>
-        <button class="btn btn-primary" type="submit">Make Operation</button>
-    </form>
+
+<!-- Contenedor que centra todo vertical y horizontalmente -->
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card p-4 text-center" style="max-width: 450px; background-color: #1a1a1a; border: 2px solid purple;">
+
+        <!-- Título -->
+        <h2 class="mb-4" style="color: purple; font-weight: bold;">Funds</h2>
+
+        <!-- Saldo en grande -->
+        <h1 style="font-size: 3rem; color: #b57bff; font-weight: bold;">
+            {{ funds | usd }}
+        </h1>
+
+        <!-- Botón para mostrar opciones -->
+        <button id="btn-show-ops" class="btn btn-primary btn-lg mt-4 w-100" type="button">
+            Perform Operation
+        </button>
+
+        <!-- Sección oculta hasta que se presione el botón -->
+        <form action="/funds" method="post" id="operation-section"
+              style="display: none;" class="mt-4">
+
+            <!-- Selección de operación -->
+            <div class="mb-3" style="color: #d6b3ff; font-size: 1.1rem;">
+                <label class="me-3">
+                    <input name="operation" value="deposit" type="radio"> Deposit
+                </label>
+                <label class="ms-3">
+                    <input name="operation" value="withdraw" type="radio"> Withdraw
+                </label>
+            </div>
+
+            <!-- Valor -->
+            <div class="mb-3">
+                <input autocomplete="off"
+                       class="form-control mx-auto"
+                       style="max-width: 200px; background-color: #2b2b2b; color: white; border: 1px solid purple;"
+                       name="value" placeholder="Amount" type="text">
+            </div>
+
+            <!-- Botón aceptar -->
+            <button class="btn btn-success btn-lg w-100" type="submit">
+                Accept Operation
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- Script para mostrar opciones -->
+<script>
+document.getElementById("btn-show-ops").addEventListener("click", () => {
+    document.getElementById("operation-section").style.display = "block";
+    document.getElementById("btn-show-ops").style.display = "none";
+});
+</script>
+
 {% endblock %}

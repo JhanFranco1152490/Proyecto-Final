@@ -1,23 +1,430 @@
-/* Size for brand */
-nav .navbar-brand
-{
-    font-size: xx-large;
+/* ----------- DARK MODE FIXES ----------- */
+
+body {
+    background-color: #121212 !important;
+    color: #f5f5f5 !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Colors for brand */
-nav .navbar-brand .blue
-{
-    color: #537fbe;
+.navbar, .bg-light {
+    background-color: #1e1e1e !important;
+    border-color: #2c2c2c !important;
 }
-nav .navbar-brand .red
-{
-    color: #ea433b;
+
+.nav-link {
+    color: #b44bff !important;
+    border: 1px solid #ffffff !important;
+    padding: 6px 14px !important;
+    border-radius: 8px;
+    margin-left: 10px;
+    transition: 0.25s;
 }
-nav .navbar-brand .yellow
-{
-    color: #f5b82e;
+
+.nav-link:hover {
+    background-color: #dcdcdc !important;
+    color: white !important;;
 }
-nav .navbar-brand .green
-{
-    color: #2e944b;
+
+/* Inputs visibles en modo oscuro */
+.form-control {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #6a5acd;
+}
+
+.form-control::placeholder {
+    color: #bfbfbf !important;
+}
+
+/* Botón */
+.btn-primary {
+    background-color: #6a5acd !important;
+    border-color: #6a5acd !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: #7b6df0 !important;
+    border-color: #7b6df0 !important;
+}
+
+
+footer {
+        margin-top: auto;        /* Empuja el footer hacia abajo */
+        padding: 8px 0;          /* Altura pequeña */
+        text-align: center;
+        font-size: 14px;
+        color: #8b5cf6 !important;  /* Texto morado */
+        background-color: #0e0e0e; /* Fondo igual a la página */
+        border-top: 1px solid #4c3ac2;  /* Línea superior morada */
+    }
+
+/* Contenedor del formulario */
+.form-wrapper {
+    max-width: 450px;      /* 🔹 Ajusta el tamaño del formulario */
+    margin: 0 auto;        /* Centrar */
+    padding: 20px;
+}
+
+/* Campos más pequeños y compactos */
+.compact-input {
+    height: 40px;          /* 🔹 Reduce la altura */
+    font-size: 0.9rem;
+}
+
+/* Íconos alineados */
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    background: #1f1f1f;
+    border: 1px solid #6b5edb;
+    padding: 0 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.input-icon {
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.compact-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+.compact-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.login-bg {
+    flex: 1; /* Ocupa todo el espacio del main */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(115deg, #5a00ee, #33007a, #17003a);
+}
+
+.login-container {
+    width: 900px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.45);
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.login-left {
+    width: 45%;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-avatar {
+    font-size: 70px;
+    color: #eee;
+    margin-bottom: 30px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+}
+
+.login-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #b44bff;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background: #c260ff;
+}
+
+.forgot {
+    margin-top: 12px;
+    color: #d6b3ff;
+    font-size: 0.9rem;
+}
+
+.login-right {
+    width: 55%;
+    background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0 15px black;
+}
+
+.login-right h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+main {
+    flex: 1;
+    display: flex;          /* 🔥 Necesario */
+    flex-direction: column; /* 🔥 Evita cortes */
+}
+
+html, body {
+    height: 100%;
+}
+
+/* ===== PROFILE ADAPTADO AL ESTILO LOGIN ===== */
+
+.profile-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.profile-card {
+    width: 900px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    display: flex;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Imagen */
+.profile-image-container {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #b44bff;
+    object-fit: cover;
+}
+
+/* Información */
+.profile-info {
+    width: 65%;
+    padding-left: 25px;
+}
+
+.profile-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: left;
+    color: rgb(128, 0, 128);
+}
+
+.profile-info .form-label {
+    color: #d6b3ff;
+}
+
+.profile-info .form-control {
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid #6b5edb !important;
+    color: white !important;
+}
+
+#btn-edit, #btn-save {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #b44bff;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#btn-edit:hover, #btn-save:hover {
+    background: #d06dff;
+}
+
+.section-title {
+    text-align: center;
+    color: rgb(128, 0, 128);
+    font-weight: bold;
+}
+
+.history-table thead th {
+    background-color: rgb(128, 0, 128);
+    color: white !important;
+}
+
+.history-table tbody tr:nth-child(odd) {
+    background-color: #e0b3ff;
+}
+
+.history-table tbody tr:nth-child(even) {
+    background-color: #f1d9ff;
+}
+
+.history-table th,
+.history-table td {
+    border-color: #5a189a !important;
+}
+
+.custom-alert {
+    background: #a855f7;          /* Morado moderno */
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    margin: 15px auto;
+    width: 80%;
+    box-shadow: 0 0 15px #a855f780;
+    border-left: 6px solid #7e22ce;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.addbook-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+/* Tarjeta elegante */
+.addbook-card {
+    width: 480px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 32px;
+    border-radius: 16px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 30px rgba(150, 70, 255, 0.25);
+    border: 1px solid #7b61ff50;
+}
+
+/* Título */
+.addbook-title {
+    text-align: center;
+    font-size: 32px;
+    color: #b44bff;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Etiquetas */
+.addbook-label {
+    font-weight: 600;
+    color: #d9caff;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Inputs */
+.addbook-input {
+    background: #1f1f1f !important;
+    border: 1px solid #6a5acd !important;
+    color: white !important;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.addbook-input::placeholder {
+    color: #c7c7c7;
+}
+
+/* Botón */
+.addbook-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #b44bff !important;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: 0.25s;
+}
+
+.addbook-btn:hover {
+    background-color: #c980ff !important;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid #6f42c1 !important;
+    color: white !important;
+}
+
+/* Labels */
+.form-label {
+    color: #c39afa !important;
+    font-weight: bold !important;
+}
+
+/* Inputs */
+.form-control {
+    background-color: #3a3a4f !important;
+    color: white !important;
+    border: 1px solid #7b52cc !important;
+}
+
+.form-control:focus {
+    background-color: #3a3a4f !important;
+    border-color: #b38bff !important;
+    color: white !important;
+}
+
+/* Botón morado */
+.btn-primary {
+    background-color: #6f42c1 !important;
+    border-color: #6f42c1 !important;
+    font-weight: bold !important;
+}
+
+/* Botón eliminar */
+.btn-danger {
+    font-weight: bold !important;
+}
+
+/* Títulos */
+h2, h3, h5 {
+    color: #c39afa !important;
+    text-align: center !important;
 }

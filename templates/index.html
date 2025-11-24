@@ -5,27 +5,32 @@
 {% endblock %}
 
 {% block main %}
-    <h2>My Books</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Year</th>
-                <th>Genre</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for book in books %}
-            <tr>
-                <td>{{ book.book_id }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.published_year }}</td>
-                <td>{{ book.genre}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+<h2 class="text-center mb-4" style="color: purple; font-weight: bold;">
+    My Books
+</h2>
+
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th style="background-color: purple !important; color: white !important;">Id</th>
+            <th style="background-color: purple !important; color: white !important;">Title</th>
+            <th style="background-color: purple !important; color: white !important;">Author</th>
+            <th style="background-color: purple !important; color: white !important;">Year</th>
+            <th style="background-color: purple !important; color: white !important;">Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.book_id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.published_year }}</td>
+            <td>{{ book.genre }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

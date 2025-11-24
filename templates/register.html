@@ -1,26 +1,39 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Register
+    Registro
 {% endblock %}
 
 {% block main %}
-    <form action="/register" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+<div class="login-bg">
+    <div class="login-container">
+
+        <!-- Panel izquierdo -->
+        <div class="login-left">
+            <div class="login-avatar">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+
+            <form action="/register" method="post" class="login-form">
+
+                <input type="text" name="username" placeholder="User name" class="login-input" required>
+
+                <input type="password" name="password" placeholder="Password" class="login-input" required>
+
+                <input type="password" name="confirmation" placeholder="Confirm Password" class="login-input" required>
+
+                <button type="submit" class="login-btn">
+                    Create account
+                </button>
+
+            </form>
         </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="first_name" placeholder="First Name" type="text">
+
+        <!-- Panel derecho (MISMA IMAGEN DEL LOGIN) -->
+        <div class="login-right">
+            <h1>Create<br>Cuenta.</h1>
         </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="last_name" placeholder="Last Name" type="text">
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password">
-        </div>
-        <button class="btn btn-primary" type="submit">Register</button>
-    </form>
+
+    </div>
+</div>
 {% endblock %}

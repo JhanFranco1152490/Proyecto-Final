@@ -1,80 +1,141 @@
-<!-- layout.html for a library webshop -->
 <!DOCTYPE html>
-
 <html lang="en">
 
-    <head>
+<head>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
 
-        <!-- http://getbootstrap.com/docs/5.3/ -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- https://favicon.io/emoji-favicons/money-bag/ -->
-        <link href="/static/books.ico" rel="icon">
+    <!-- Estilos propios -->
+    <link href="/static/styles.css" rel="stylesheet">
+    <link href="/static/books.ico" rel="icon">
 
-        <link href="/static/styles.css" rel="stylesheet">
+    <title>Library · {% block title %}{% endblock %}</title>
 
-        <title>Library: {% block title %}{% endblock %}</title>
+    <style>
 
-    </head>
+        /* ======== NAVBAR MODERNO ======== */
+        nav.navbar {
+            background: rgba(30, 0, 50, 0.55) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid rgba(170, 75, 255, 0.4);
+            box-shadow: 0 0 15px rgba(170, 75, 255, 0.4);
+        }
 
-    <body>
+        nav .nav-link {
+            color: #d8c7ff !important;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-        <nav class="bg-light border navbar navbar-expand-md navbar-light">
-            <div class="container-fluid">
-                <a href="/" class="navbar-brand">
-                    <img src="../static/library.png" alt="Bookstore Logo" class="navbar-brand mb-0 ms-3" style="height: 70px;">
-                </a>
-                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar">
-                    {% if session["user_id"] %}
-                        <ul class="navbar-nav me-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/funds">Funds</a></li>
-                            {% if session["role_id"]== 1 %}
-                                <li class="nav-item"><a class="nav-link" href="/add">Add Book</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/update_search">Update Book</a></li>
-                            {% endif %}
-                        </ul>
-                        <ul class="navbar-nav ms-auto mt-2">
-                            {% if funds is defined %}
-                                <li class="nav-item"><span class="nav-link">Funds: {{ funds | usd }}</span></li>
-                            {% endif %}
-                            <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
-                        </ul>
-                    {% else %}
-                        <ul class="navbar-nav ms-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
-                        </ul>
+        nav .nav-link:hover {
+            color: #b44bff !important;
+            text-shadow: 0 0 8px #ffffff;
+        }
+
+        nav .navbar-brand span {
+            color: #cfa3ff !important;
+            text-shadow: 0 0 10px #b44bff;
+        }
+
+        /* ======== ALERTA MODERNA ======== */
+        .custom-alert {
+            background: linear-gradient(90deg, #8b2cff, #b44bff);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 8px;
+            margin: 12px auto;
+            width: 80%;
+            box-shadow: 0 0 12px rgba(180, 75, 255, 0.8);
+        }
+
+        /* ======== MAIN ======== */
+        body {
+            background: #0c0b11;
+            color: white;
+            font-family: "Segoe UI", system-ui, sans-serif;
+        }
+
+        /* ======== FOOTER ======== */
+        footer {
+            border-top: 2px solid rgba(180, 75, 255, 0.4);
+            text-shadow: 0 0 8px #7b61ff;
+            box-shadow: 0 -2px 15px rgba(180, 75, 255, 0.3);
+        }
+
+    </style>
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="border navbar navbar-expand-md navbar-dark">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand d-flex align-items-center ms-3">
+                <img src="../static/library.png" alt="Bookstore Logo" style="height: 70px;">
+                <span class="ms-3 fs-3 fw-semibold">Jhan & Yulian Library</span>
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.get("user_id") %}
+                <ul class="navbar-nav me-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/funds">Funds</a></li>
+
+                    {% if session.get("role_id") == 1 %}
+                    <li class="nav-item"><a class="nav-link" href="/add">Add Book</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/update_search">Update Book</a></li>
                     {% endif %}
-                </div>
+                </ul>
+
+                <ul class="navbar-nav ms-auto mt-2">
+                    {% if funds is defined %}
+                    <li class="nav-item">
+                        <span class="nav-link">Funds: {{ funds | usd }}</span>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                </ul>
+
+                {% else %}
+                <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                </ul>
+                {% endif %}
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary mb-0 text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-        {% endif %}
+    {% if get_flashed_messages() %}
+    <header>
+        <div class="custom-alert">
+            {{ get_flashed_messages() | join(" ") }}
+        </div>
+    </header>
+    {% endif %}
 
-        <main class="container py-5 text-center">
-            {% block main %}{% endblock %}
-        </main>
+    <main class="flex-fill">
+        {% block main %}{% endblock %}
+    </main>
 
-        <!-- Footer -->
-        <footer class="mb-5">
-            <hr>
-            <p class="text-center text-muted">Jhan & Yulian's Library Webshop 2025</p>
-        </footer>
-    </body>
+    <footer class="text-center py-2 mt-auto">
+        Jhan & Yulian's Library Webshop 2025
+    </footer>
+
+</body>
 </html>

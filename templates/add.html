@@ -5,23 +5,48 @@
 {% endblock %}
 
 {% block main %}
-    <h2>Add Books</h2>
-    <form action="/add" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="title" placeholder="Title" type="text">
-        </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="author" placeholder="Author" type="text">
-        </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="published_year" placeholder="Published_year" type="text">
-        </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="genre" placeholder="Genre" type="text">
-        </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="price" placeholder="Price" type="text">
-        </div>
-        <button class="btn btn-primary" type="submit">Search</button>
-    </form>
+
+<div class="addbook-wrapper">
+    <div class="addbook-card">
+        
+        <h2 class="addbook-title">Add a New Book</h2>
+
+        <form action="/add" method="post">
+
+            <div class="form-group mb-3">
+                <label class="addbook-label">Title</label>
+                <input autocomplete="off" autofocus class="form-control addbook-input" 
+                       name="title" placeholder="Enter title">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="addbook-label">Author</label>
+                <input autocomplete="off" class="form-control addbook-input" 
+                       name="author" placeholder="Enter author">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="addbook-label">Published Year</label>
+                <input autocomplete="off" class="form-control addbook-input" 
+                       name="published_year" placeholder="Enter year">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="addbook-label">Genre</label>
+                <input autocomplete="off" class="form-control addbook-input" 
+                       name="genre" placeholder="Enter genre">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="addbook-label">Price</label>
+                <input autocomplete="off" class="form-control addbook-input" 
+                       name="price" placeholder="Enter price">
+            </div>
+
+            <button class="btn addbook-btn" type="submit">Add Book</button>
+
+        </form>
+    </div>
+</div>
+
 {% endblock %}

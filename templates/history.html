@@ -5,25 +5,45 @@
 {% endblock %}
 
 {% block main %}
-    <h2>Hystory</h2>
-    <table class="table">
-        <thead>
+
+<h2 class="text-center mb-4" style="
+    color: purple;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(128,0,128,0.7);
+">
+    History
+</h2>
+
+<div class="d-flex justify-content-center">
+    <table class="table table-dark table-striped"
+           style="
+               width: 90%;
+               background-color: #1e1e1e;
+               border: 2px solid purple;
+               border-radius: 10px;
+               overflow: hidden;
+               box-shadow: 0 0 15px rgba(128,0,128,0.6);
+           ">
+        <thead style="background-color: #2b2b2b; color: #d28bff;">
             <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Price</th>
-                <th>Transaction Date</th>
+                <th>Transaction date</th>
             </tr>
         </thead>
+
         <tbody>
             {% for transaction in transactions %}
-                <tr>
-                    <td>{{ transaction.id }}</td>
-                    <td>{{ transaction.title }}</td>
-                    <td>{{ transaction.price | usd }}</td>
-                    <td>{{ transaction.purchase_date }}</td>
-                </tr>
+            <tr style="color: white;">
+                <td>{{ transaction.id }}</td>
+                <td>{{ transaction.title }}</td>
+                <td>{{ transaction.price | usd }}</td>
+                <td>{{ transaction.purchase_date }}</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
+
 {% endblock %}

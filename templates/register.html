@@ -14,10 +14,18 @@
                 <i class="bi bi-person-plus-fill"></i>
             </div>
 
-            <form action="/register" method="post" class="login-form">
+           <form action="/register" method="post" class="login-form">
 
+                <!-- Nombre + Apellido -->
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" name="first_name" placeholder="First name" class="login-input" required>
+                    <input type="text" name="last_name" placeholder="Last name" class="login-input" required>
+                </div>
+
+                <!-- Username -->
                 <input type="text" name="username" placeholder="User name" class="login-input" required>
 
+                <!-- Password -->
                 <input type="password" name="password" placeholder="Password" class="login-input" required>
 
                 <input type="password" name="confirmation" placeholder="Confirm Password" class="login-input" required>

@@ -1,0 +1,1 @@
+It is necessary to install Flask, Flask_session, and CS50 in a virtual environment.

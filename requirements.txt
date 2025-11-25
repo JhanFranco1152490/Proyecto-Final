@@ -1,5 +1,4 @@
 cs50
 flask
 flask-session
-pytz
-requests
+

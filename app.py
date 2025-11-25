@@ -104,6 +104,22 @@ def buy():
 
     return redirect("/")
 
+@app.route("/delete", methods=["POST"])
+@admin_required
+def delete_book():
+    """Delete a book from the store."""
+    if request.method == "POST":
+        try:
+            book_id = get_int("book_id")
+        except ValueError as e:
+            return apology(str(e))
+        
+        # Delete the book
+        db.execute("DELETE FROM books WHERE id = ?", book_id)
+        
+        flash("Book Deleted")
+        return redirect("/search")
+
 @app.route("/funds", methods=["GET", "POST"])
 @login_required
 def funds():
@@ -314,22 +330,6 @@ def update_search():
         return render_template("update.html", book=books[0], funds=funds)
     
     return render_template("update_search.html", funds=funds)
-
-@app.route("/delete", methods=["POST"])
-@admin_required
-def delete_book():
-    """Delete a book from the store."""
-    if request.method == "POST":
-        try:
-            book_id = get_int("book_id")
-        except ValueError as e:
-            return apology(str(e))
-        
-        # Delete the book
-        db.execute("DELETE FROM books WHERE id = ?", book_id)
-        
-        flash("Book Deleted")
-        return redirect("/search")
 
 # Helpers
 def get_funds(id):
